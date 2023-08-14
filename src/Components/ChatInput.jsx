@@ -8,26 +8,47 @@ import Picker from "emoji-picker-react";
 import { useState } from "react";
 import { BsEmojiSmileFill } from "react-icons/bs";
 
-const ChatInput = () => {
-  const [msg, setMsg] = useState("");
+const obj = {
+  msg :""
+}
+
+const ChatInput = ({setMessage}) => {
+  const [msg, setMsg] = useState(obj);
   const [showEmojiPicker,setShowEmojiPicker] = useState(false);
 
  const handleShowEmoji = ()=>{
    setShowEmojiPicker(!showEmojiPicker)
  }
 
+  const handleChange = (e)=>{
+    const { value, name } = e.target;
+    setMsg({...msg,[name]:value})
+  }
+
   const handleEmojiClick = (event, emojiObject) => {
     if (event.emoji) {
-      let message = msg;
+      let message = msg.msg;
       message += event.emoji;
       setMsg(message);
     }
     if (emojiObject.emoji) {
-      let message = msg;
+      let message = msg.msg;
       message += emojiObject.emoji;
       setMsg(message);
     }
   };
+
+  const handleClick = () => {
+    let obj1 = {
+      userName :"Alan",
+      like:0,
+      msg:msg.msg
+    }
+    setMessage((data)=>{
+       return [...data,obj1]
+    });
+    setMsg(obj)
+  }
 
   return (
     <Box
@@ -48,7 +69,6 @@ const ChatInput = () => {
                   <Picker onEmojiClick={handleEmojiClick}/>
                 </Box> }
             </Box>
-        {/* <BsEmojiSmileFill onClick={handleEmojiPickerhideShow} /> */}
         <Flex
           flex="1"
           borderRadius="50%"
@@ -63,14 +83,21 @@ const ChatInput = () => {
           <Box fontWeight="700">@</Box>
         </Flex>
         <Input
-          value={msg}
-          onChange={(e) => setMsg(e.target.value)}
+          value={msg.msg}
+          name="msg"
+          onChange={handleChange}
           flex="12"
           _focus={{ border: "none" }}
           m="0rem"
           _placeholder={{ color: "red" }}
           placeholder="Message..."
           background="linear-gradient(rgb(183, 183, 246),rgb(123, 123, 245))"
+          onKeyPress={(e)=>{
+            if(e.key==="Enter")
+            {
+                handleClick();
+            }
+          }}
         />
         <Flex
           flex="1"
@@ -81,6 +108,7 @@ const ChatInput = () => {
           p="0.5rem"
           background="linear-gradient(rgb(183, 183, 146),rgb(123, 123, 100))"
           height="2.2rem"
+          onClick={handleClick}
         >
           <MdSend color="gray.300" />
         </Flex>
