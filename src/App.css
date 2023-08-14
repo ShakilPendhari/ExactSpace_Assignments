@@ -24,3 +24,20 @@ input:focus{
   border-bottom-right-radius: 0px;
   background:linear-gradient(rgb(203, 203, 244),rgb(161, 161, 205)); */
 }
+
+.msg-container{
+  height: 78%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.msg-container::-webkit-scrollbar{
+  display: none;
+}
+.msg-container::-webkit-scrollbar-track {
+  display: none;
+}
+.msg-container::-webkit-scrollbar-thumb{
+  background:linear-gradient(45deg,rgb(239, 146, 146),rgb(249, 249, 170),rgb(168, 247, 168));
+}

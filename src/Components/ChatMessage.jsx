@@ -16,7 +16,7 @@ const ChatMessage = ({data,setMessage}) => {
           data.length>0 && data.map((el,i)=>(
             <Box p="1rem" mb="0.5rem" borderRadius="10px" border="1px solid green" width={{base:"40%",sm:"30%",md:"20%"}} key={i} textAlign="center">
               <Flex alignItems="center" background="rgb(210, 242, 94)" border="2px solid red" borderRadius="7px">
-                 <Heading as="h4" fontSize="1.4rem" flex="4">{el.msg}</Heading>
+                 <Heading width="50%" as="h4" fontSize="1.1rem" flex="4">{el.msg}</Heading>
                  <Box  position="relative">
                  <Button onClick={()=>handleLike(i)}>Like</Button>
                  <span style={{
