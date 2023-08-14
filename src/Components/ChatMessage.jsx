@@ -1,21 +1,36 @@
 
-import { Box, Flex, Text } from "@chakra-ui/react"
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react"
 import ScrollToBottom from "react-scroll-to-bottom"
 
-const ChatMessage = ({data}) => {
+const ChatMessage = ({data,setMessage}) => {
+
+  const handleLike = (index)=>{
+    let newData = [...data];
+    newData[index].like = newData[index].like + 1; 
+      setMessage(newData)
+  }
+
   return (
    <Box pr="1rem" >
-        <ScrollToBottom>
         {
           data.length>0 && data.map((el,i)=>(
-            <Box border="1px solid green" width="20%" key={i} textAlign="right">
-                <Text>{el.msg}</Text>
+            <Box p="1rem" mb="0.5rem" borderRadius="10px" border="1px solid green" width={{base:"40%",sm:"30%",md:"20%"}} key={i} textAlign="center">
+              <Flex alignItems="center" background="rgb(210, 242, 94)" border="2px solid red" borderRadius="7px">
+                 <Heading as="h4" fontSize="1.4rem" flex="4">{el.msg}</Heading>
+                 <Box  position="relative">
+                 <Button onClick={()=>handleLike(i)}>Like</Button>
+                 <span style={{
+                  position:"absolute",
+                  top:"-0.2rem",
+                  right:"0.1rem",
+                  flex:1
+                 }}>{el.like}</span>
+                 </Box>
+              </Flex>
                 <Text>{el.userName}</Text>
-                <Text>{el.like}</Text>
             </Box>
           ))
         }
-        </ScrollToBottom>
    </Box>
   )
 }

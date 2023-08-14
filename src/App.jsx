@@ -3,18 +3,18 @@ import './App.css'
 import ChatInput from './Components/ChatInput.jsx'
 import ChatMessage from './Components/ChatMessage.jsx'
 import { useState } from 'react'
-
-
-const user_list = ["Alan", "Bob", "Carol", "Dean", "Elin"];
+import ScrollToBottom from "react-scroll-to-bottom"
 
 
 function App() {
   const [ message, setMessage ] = useState([])
 
   return (
-    <Box position="relative" width="76vw" p="1rem" height="90vh" left="12vw" border="1px solid red">
-        <Box height="80%" overflow="scroll">
-            <ChatMessage data = {message} />
+    <Box position="relative" width="76vw" p="1rem" height="90vh" left="12vw" boxShadow='0px 0px 5px gray'>
+        <Box height="70%" overflowY="scroll">
+        <ScrollToBottom>
+            <ChatMessage data = {message} setMessage={setMessage} />
+        </ScrollToBottom>
         </Box>
         <Box height="10%">
           <ChatInput setMessage={setMessage}/>

@@ -12,6 +12,8 @@ const obj = {
   msg :""
 }
 
+const user_list = ["Alan", "Bob", "Carol", "Dean", "Elin"];
+
 const ChatInput = ({setMessage}) => {
   const [msg, setMsg] = useState(obj);
   const [showEmojiPicker,setShowEmojiPicker] = useState(false);
@@ -27,27 +29,29 @@ const ChatInput = ({setMessage}) => {
 
   const handleEmojiClick = (event, emojiObject) => {
     if (event.emoji) {
-      let message = msg.msg;
-      message += event.emoji;
-      setMsg(message);
+      setMsg((mg)=>({"msg":mg.msg+event.emoji}))
     }
-    if (emojiObject.emoji) {
-      let message = msg.msg;
-      message += emojiObject.emoji;
-      setMsg(message);
+    else if (emojiObject.emoji) {
+      setMsg((mg)=>({"msg":mg.msg+event.emoji}))
     }
   };
 
   const handleClick = () => {
+    let name = Math.floor( Math.random() * user_list.length);
+    console.log("name:",name)
     let obj1 = {
-      userName :"Alan",
+      userName :user_list[name],
       like:0,
       msg:msg.msg
     }
-    setMessage((data)=>{
-       return [...data,obj1]
-    });
-    setMsg(obj)
+    if(msg.msg)
+    {
+      setMessage((data)=>{
+        return [...data,obj1]
+     });
+     setMsg(obj)
+    }
+   
   }
 
   return (
