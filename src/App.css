@@ -1,0 +1,25 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+html,body
+{
+  height:100%;
+  width:100%;
+}
+input{
+  border:1px solid grey;
+  border-radius: 10px;
+  border-right: 1px solid transparent;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+input:focus{
+  /* border: 1px solid transparent;
+  border-radius: 10px;
+  border-right: 1px solid transparent;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background:linear-gradient(rgb(203, 203, 244),rgb(161, 161, 205)); */
+}
