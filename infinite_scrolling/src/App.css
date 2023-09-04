@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;600&display=swap');
+
+.App{
+   height: 100vh;
+   width: 100vw;
+   /* display: flex;
+   align-items: center;
+   justify-content: center; */
+   font-family: 'Saira Condensed', sans-serif;
+   font-weight: 600;
+   padding: 1rem 0rem;
+   overflow: hidden;
+}
+body{
+    overflow: hidden;
+}
+.TopBox{
+    padding-top: 2rem;
+    width: 70vw;
+    /* min-width: 35rem; */
+    min-width: 40.7rem;
+    margin: auto;
+    height: 96vh;
+    overflow-y: scroll;
+    /* border:1px solid red; */
+}
+.TopBox::-webkit-scrollbar{
+    display: none;
+    scroll-behavior: smooth;
+}
+.loader{
+    width: 90%;
+    margin: auto;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader>div{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border:3px solid rgb(213, 212, 212);
+    border-bottom: 3px solid rgb(0, 0, 0);
+    border-left: 3px solid rgb(0, 0, 0);
+    animation: loader 1s linear infinite;
+}
+
+@keyframes loader{
+    0%{
+        transform: rotate(-360deg);
+    }
+}
+
+
+@media all and (min-width:481px) and (max-width:768px)
+{
+    .TopBox{
+        width: 95%;
+        min-width: 28rem;
+        height: 100vh;
+    }
+}
+
+@media all and (min-width:250px) and (max-width:480px)
+{
+    .TopBox{
+        width: 95%;
+        min-width: 16rem;
+        height: 100vh;
+    }
+}
