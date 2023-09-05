@@ -26,7 +26,6 @@ body {
     height: 96vh;
     overflow-y: scroll;
     position: relative;
-    /* border:1px solid red; */
 }
 
 .TopBox::-webkit-scrollbar {
@@ -61,8 +60,8 @@ body {
 
 .topArrow {
     position: fixed;
-    bottom: 2rem;
-    right: 14%;
+    bottom: 1rem;
+    right: 15%;
     border-radius: 50%;
     display: flex;
     justify-content: center;
