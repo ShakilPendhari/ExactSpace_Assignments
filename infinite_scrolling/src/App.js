@@ -8,7 +8,9 @@ function App() {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const ref = useRef(null);
+  const topRef = useRef(null);
   const [loading,setLoading] = useState(false);
+  const [showBut, setShowBut] = useState(false);
 
 useEffect(()=>{
     ref.current.addEventListener("scroll",handlScroll);
@@ -31,6 +33,16 @@ useEffect(() => {
           console.log("hello")
           setPage(page+1)
       }
+
+      console.log(ref.current.scrollTop > 20)
+        if (ref.current.scrollTop > 20) {
+          setShowBut(true);
+        } else {
+          setShowBut(false);
+        }
+  }
+  function topFunction() {
+    ref.current.scrollTop = 0;
   }
 
 
@@ -68,6 +80,11 @@ useEffect(() => {
               <div></div>
             </div>
           }
+         {
+           showBut &&  <div className="topArrow">
+             <i onClick={topFunction} ref={topRef} className="fa-solid fa-arrow-up"></i>
+          </div>
+         }
       </div>
     </div>
   );

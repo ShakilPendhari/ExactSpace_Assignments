@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;600&display=swap');
 
-.App{
-   height: 100vh;
-   width: 100vw;
-   /* display: flex;
+.App {
+    height: 100vh;
+    width: 100vw;
+    /* display: flex;
    align-items: center;
    justify-content: center; */
-   font-family: 'Saira Condensed', sans-serif;
-   font-weight: 600;
-   padding: 1rem 0rem;
-   overflow: hidden;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 600;
+    padding: 1rem 0rem;
+    overflow: hidden;
+    transition: all 0.6s ease-in;
 }
-body{
+
+body {
     overflow: hidden;
 }
-.TopBox{
+
+.TopBox {
     padding-top: 2rem;
     width: 70vw;
     /* min-width: 35rem; */
@@ -22,13 +25,16 @@ body{
     margin: auto;
     height: 96vh;
     overflow-y: scroll;
+    position: relative;
     /* border:1px solid red; */
 }
-.TopBox::-webkit-scrollbar{
+
+.TopBox::-webkit-scrollbar {
     display: none;
     scroll-behavior: smooth;
 }
-.loader{
+
+.loader {
     width: 90%;
     margin: auto;
     height: 4rem;
@@ -36,37 +42,124 @@ body{
     justify-content: center;
     align-items: center;
 }
-.loader>div{
+
+.loader>div {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    border:3px solid rgb(213, 212, 212);
+    border: 3px solid rgb(213, 212, 212);
     border-bottom: 3px solid rgb(0, 0, 0);
     border-left: 3px solid rgb(0, 0, 0);
     animation: loader 1s linear infinite;
 }
 
-@keyframes loader{
-    0%{
+@keyframes loader {
+    0% {
+        transform: rotate(-360deg);
+    }
+}
+
+.topArrow {
+    position: fixed;
+    bottom: 2rem;
+    right: 14%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.fa-arrow-up {
+    position: relative;
+    background-color: rgb(241, 190, 190);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.fa-arrow-up::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 50%;
+    right: 50%;
+    color: green;
+    animation: mover 2s ease-in infinite alternate;
+}
+
+@keyframes mover {
+
+    0%,
+    100% {
+        top: 60%
+    }
+
+    50% {
+        top: 45%
+    }
+}
+
+.fa-arrow-up::after {
+    content: "";
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    border: 3px dashed rgb(51, 31, 240) !important;
+    border-radius: 50%;
+    animation: roter 10s linear infinite alternate;
+    display: none;
+}
+
+.fa-arrow-up:hover::after {
+    display: block;
+}
+
+@keyframes roter {
+    0% {
         transform: rotate(-360deg);
     }
 }
 
 
-@media all and (min-width:481px) and (max-width:768px)
-{
-    .TopBox{
+
+@media all and (min-width:481px) and (max-width:768px) {
+    .TopBox {
         width: 95%;
         min-width: 28rem;
         height: 100vh;
     }
+
+    .topArrow {
+        bottom: 1rem;
+        right: 1%;
+    }
+    .fa-arrow-up {
+        width: 1.7rem;
+        height: 1.7rem;
+    }
 }
 
-@media all and (min-width:250px) and (max-width:480px)
-{
-    .TopBox{
+@media all and (min-width:250px) and (max-width:480px) {
+    .TopBox {
         width: 95%;
         min-width: 16rem;
         height: 100vh;
+    }
+
+    .topArrow {
+        bottom: 1rem;
+        right: 1%;
+    }
+    .fa-arrow-up {
+        width: 1.4rem;
+        height: 1.4rem;
     }
 }
