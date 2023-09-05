@@ -42,7 +42,8 @@ useEffect(() => {
         }
   }
   function topFunction() {
-    ref.current.scrollTop = 0;
+    // ref.current.scrollTop = 0;
+    window.location.href = "#topElement"
   }
 
 
@@ -73,7 +74,7 @@ useEffect(() => {
       <div className="TopBox" ref={ref}>
         {data &&
           data?.map((el,i) => {
-            return <Card key={i} data={el} />;
+            return <Card key={i} index={i} data={el} />;
           })}
           {
             loading && <div className="loader">

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import style from "./Card.module.css";
 
-const Card = ({ data }) => {
+const Card = ({ data,index }) => {
   const [likes, setLikes] = useState(0);
 
   return (
-    <div className={style.cardWrapper}>
+    <div className={style.cardWrapper} id={index===0?"topElement":""}>
       <div className={style.card}>
         <img className={style.img} src={data.download_url} alt={data.author} />
         <div className={style.head}>{data.author}</div>
