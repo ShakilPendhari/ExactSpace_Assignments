@@ -25,20 +25,17 @@ useEffect(() => {
       let clientHeight = ref.current.clientHeight;
       let scrollTop = ref.current.scrollTop;
       let scrollHeight = ref.current.scrollHeight;
-      console.log("Scroll:",scrollTop+clientHeight,"ScrollHeight:",scrollHeight);
+      // console.log("Scroll:",scrollTop+clientHeight,"ScrollHeight:",scrollHeight);
       if(Math.ceil(clientHeight+scrollTop)>=scrollHeight)
       {
-        if(page<=3)
-        {
           console.log("hello")
           setPage(page+1)
-        }
       }
   }
 
 
   function handleAPI(page = 1) {
-    console.log("page:",page)
+    // console.log("page:",page)
     getData(page);
   }
 
@@ -47,8 +44,11 @@ useEffect(() => {
     try {
       let res = await axios(`${process.env.REACT_APP_URL}?page=${page}`);
     
-      setData([...data,...res.data]);
       setLoading(false);
+      if(res.data.length)
+      {
+        setData([...data,...res.data]);
+      }
       console.log(res.data);
     } catch (err) {
       console.log("Error:", err);
