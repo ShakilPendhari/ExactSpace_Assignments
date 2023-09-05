@@ -8,7 +8,7 @@ const Card = ({ data }) => {
     <div className={style.cardWrapper}>
       <div className={style.card}>
         <img className={style.img} src={data.download_url} alt={data.author} />
-        <div className={style.head}>{data.id+" "+data.author}</div>
+        <div className={style.head}>{data.author}</div>
       </div>
       <div className={style.thumsUpDiv}>
           <div className={style.count}>
